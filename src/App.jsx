@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <>
-      <p>Cocktailandia</p>
+      <p className="text-3xl font-bold underline">Cocktailandia</p>
     </>
   );
 }
