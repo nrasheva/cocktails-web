@@ -1,0 +1,31 @@
+import styles from './Button.module.css';
+
+export const Button = (props) => {
+  if (props.type === 'hamburger') {
+    return (
+      <button className='bg-transparent	border-transparent py-2' onClick={props.onClick}>
+        <div className='bg-black h-0.5 my-2 mx-0 transition duration-700 w-6' />
+        <div className='bg-black h-0.5 my-2 mx-0 transition duration-700 w-6' />
+        <div className='bg-black h-0.5 my-2 mx-0 transition duration-700 w-6' />
+      </button>
+    );
+  } else if (props.type === 'hide') {
+    return (
+      <button className='bg-transparent	border-transparent py-2' onClick={props.onClick}>
+        <div className={styles.visible} />
+        <div className={styles.visible} />
+        <div className={styles.visible} />
+      </button>
+    );
+  }
+
+  if (props.type === 'regular') {
+    return (
+      <button className='' onClick={props.onClick}>
+        <p className='w-80 py-4 hover:border hover:border-white text-white bg-transparent hover:bg-white hover:text-black'>
+          {props.text}
+        </p>
+      </button>
+    );
+  }
+};
