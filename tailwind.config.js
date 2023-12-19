@@ -11,6 +11,9 @@ export default {
       minHeight: {
         maxScreen: '100svh',
       },
+      height: {
+        customHeight: '35rem',
+      },
       fontFamily: {
         staatliches: ['Staatliches', 'sans-serif'],
       },
