@@ -1,7 +1,15 @@
 import './App.css';
+import { Outlet } from 'react-router-dom';
+
+import { Navigation } from './components/Navigation/Navigation';
 
 function App() {
-  return <p className='text-3xl font-bold underline'>Cocktailandia</p>;
+  return (
+    <>
+      <Navigation />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
