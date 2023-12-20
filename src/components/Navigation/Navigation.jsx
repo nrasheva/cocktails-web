@@ -31,10 +31,10 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className='lg:px-36 flex px-10 items-center justify-between border-b-2 border-border z-5 inset-0'>
+    <nav className='lg:px-36 flex px-10 items-center justify-between border-b-2 border-navBorder z-5 inset-0'>
       <span
-        className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wide text-xl ${styles['text-shadow-custom']}`}
-        onClick={() => navigate('/')}>
+        className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-tightest text-3xl ${styles['text-shadow-custom']}`}
+        onClick={() => handleNavigation('/')}>
         Cocktailandia
       </span>
       <div className='lg:grow w-10 h-14 md:items-center'>
