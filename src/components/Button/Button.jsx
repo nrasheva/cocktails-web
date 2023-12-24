@@ -22,7 +22,7 @@ export const Button = (props) => {
   if (props.type === 'regular') {
     return (
       <button className='' onClick={props.onClick}>
-        <p className='w-80 py-3 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black uppercase'>
+        <p className='w-80 py-3 border-2 border-white text-white bg-transparent hover:bg-white hover:text-blueberry uppercase'>
           {props.text}
         </p>
       </button>
