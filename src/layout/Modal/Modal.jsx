@@ -56,14 +56,14 @@ export const Modal = () => {
               type='number'
               id='year'
               name='year'
-              className={`bg-transparent text-5xl text-center text-blueberry ${styles.year}`}
+              className={`bg-transparent lg:text-5xl text-2xl text-center text-blueberry ${styles.year}`}
               value={year}
               onChange={handleInputChange}
               onKeyDown={handleInputKeyPress}
             />
           </div>
         ) : (
-          <div className='bg-blueberryLight flex flex-col gap-3 justify-center items-center p-8 text-white'>
+          <div className='lg:bg-blueberryLight flex flex-col gap-3 justify-center items-center p-8 lg:text-white text-blueberry'>
             <p>SORRY YOU ARE NOT OLD ENOUGH TO ACCESS TO THE WEBSITE</p>
             <Button text='I MADE A MISTAKE' type='regular' onClick={handleModal} />
           </div>
