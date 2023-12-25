@@ -1,0 +1,31 @@
+.dialog {
+  border: none;
+  padding: 2rem;
+  min-height: 100svh;
+  width: 100%;
+  background-image: url('src/assets/Modal.jpg');
+  background-position: bottom;
+  background-size: cover;
+}
+
+.dialog::backdrop {
+  background-color: rgba(20, 20, 25, 0.85);
+}
+
+.content {
+  margin: 1rem 0 2rem 0;
+}
+
+.text-shadow-custom {
+  text-shadow: 1px 1px #092d4d;
+}
+
+.year::-webkit-outer-spin-button,
+.year::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.year:focus {
+  outline: none;
+}
