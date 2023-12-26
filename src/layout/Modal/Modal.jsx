@@ -4,7 +4,10 @@ import styles from './Modal.module.css';
 import { Button } from '../../components/Button/Button';
 
 export const Modal = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    const storedShow = localStorage.getItem('modalShow');
+    return storedShow ? JSON.parse(storedShow) : true;
+  });
   const [year, setYear] = useState('');
   const [underaged, setUnderaged] = useState(true);
 
@@ -16,11 +19,9 @@ export const Modal = () => {
     } else {
       modalRef.current.close();
     }
-  }, [show]);
 
-  const handleInputChange = (e) => {
-    setYear(e.target.value);
-  };
+    localStorage.setItem('modalShow', JSON.stringify(show));
+  }, [show]);
 
   const handleInputKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -33,10 +34,6 @@ export const Modal = () => {
         setUnderaged(false);
       }
     }
-  };
-
-  const handleModal = () => {
-    setUnderaged(true);
   };
 
   return (
@@ -58,14 +55,14 @@ export const Modal = () => {
               name='year'
               className={`bg-transparent lg:text-5xl text-2xl text-center text-blueberry ${styles.year}`}
               value={year}
-              onChange={handleInputChange}
+              onChange={(e) => setYear(e.target.value)}
               onKeyDown={handleInputKeyPress}
             />
           </div>
         ) : (
           <div className='lg:bg-blueberryLight flex flex-col gap-3 justify-center items-center p-8 lg:text-white text-blueberry'>
             <p>SORRY YOU ARE NOT OLD ENOUGH TO ACCESS TO THE WEBSITE</p>
-            <Button text='I MADE A MISTAKE' type='regular' onClick={handleModal} />
+            <Button text='I MADE A MISTAKE' type='regular' onClick={() => setUnderaged(true)} />
           </div>
         )}
       </dialog>
