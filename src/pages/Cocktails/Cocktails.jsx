@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Cocktail } from '../../components/Cocktail/Cocktail';
 
 const COCKTAILS_DATA = [
@@ -172,6 +174,8 @@ const COCKTAILS_DATA = [
 ];
 
 export const Cocktails = () => {
+  const navigate = useNavigate();
+
   return (
     <main className='flex flex-col'>
       <div className='bg-orangada flex flex-col lg:px-80 px-4 py-10 justify-center text-white '>
@@ -191,6 +195,7 @@ export const Cocktails = () => {
             img={cocktail.img}
             taste={cocktail.taste}
             level={cocktail.level}
+            onClick={() => navigate(`/details/${cocktail.id}`)}
           />
         ))}
       </div>

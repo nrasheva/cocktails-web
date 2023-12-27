@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Cocktail = (props) => {
   return (
-    <div className='cursor-pointer'>
+    <div className='cursor-pointer' onClick={props.onClick}>
       <div className='border-b-1px border-navBorder'>
         <img className='w-64 h-64' src={props.img} alt={props.name} />
         <p className='font-oswald p-2 flex items-start'>{props.name}</p>
