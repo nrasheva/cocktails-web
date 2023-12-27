@@ -173,7 +173,7 @@ const COCKTAILS_DATA = [
 
 export const Cocktails = () => {
   return (
-    <main className='bg-blue-200 flex flex-col'>
+    <main className='flex flex-col'>
       <div className='bg-orangada flex flex-col lg:px-80 px-4 py-10 justify-center text-white '>
         <div className='flex flex-col gap-3'>
           <h1 className='lg:text-5xl text-2xl font-oswald font-medium'>FIND YOUR PERFECT COINTREAU COCKTAIL</h1>
@@ -183,7 +183,7 @@ export const Cocktails = () => {
           </p>
         </div>
       </div>
-      <div className='bg-blue-200 flex flex-wrap justify-center gap-4 lg:px-36 py-12'>
+      <div className='flex flex-wrap justify-center gap-4 lg:px-36 py-12'>
         {COCKTAILS_DATA.map((cocktail) => (
           <Cocktail
             key={cocktail.id}

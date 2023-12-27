@@ -32,7 +32,7 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className='lg:px-36 flex px-10 items-center justify-between border-b-2 border-navBorder z-5 inset-0'>
+    <nav className='lg:px-36 flex items-center justify-around border-b-2 border-navBorder z-5 inset-0'>
       <span
         className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}
         onClick={() => navigate('/')}>

@@ -32,6 +32,9 @@ export default {
       padding: {
         '15rem': '15rem',
       },
+      borderWidth: {
+        '1px': '1px',
+      },
     },
   },
 };
