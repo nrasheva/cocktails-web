@@ -12,7 +12,9 @@ function App() {
     <Provider store={store}>
       <Modal />
       <Navigation />
-      <Outlet />
+      <div className='mt-14'>
+        <Outlet />
+      </div>
       <Footer />
     </Provider>
   );

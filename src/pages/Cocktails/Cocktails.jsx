@@ -180,7 +180,7 @@ export const Cocktails = () => {
   return (
     <main className='flex flex-col'>
       <Intro
-        text='FIND YOUR PERFECT COINTREAU COCKTAIL'
+        text='FIND YOUR PERFECT COCKTAIL'
         description='Explore our variety of cocktail recipes. From timeless classics to original creations, learn how to make the
           perfect drink.'
       />

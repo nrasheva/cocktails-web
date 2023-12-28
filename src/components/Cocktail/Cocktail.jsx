@@ -8,7 +8,7 @@ export const Cocktail = (props) => {
       <div className='border-b-1px border-navBorder overflow-hidden'>
         <div className='group overflow-hidden'>
           <img
-            className='w-64 h-64 inline-block align-middle transform group-hover:scale-105 transition duration-150'
+            className='w-64 h-64 inline-block align-middle group-hover:scale-105 transition duration-150'
             src={props.img}
             alt={props.name}
           />

@@ -32,7 +32,7 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className='lg:px-36 flex items-center justify-around border-b-2 border-navBorder z-5 inset-0'>
+    <nav className='bg-white fixed w-full top-0 left-0 h-navigationHeight lg:px-36 flex justify-around border-b-2 border-navBorder z-5 inset-0'>
       <span
         className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}
         onClick={() => navigate('/')}>
@@ -41,7 +41,7 @@ export const Navigation = () => {
       <div className='lg:grow w-10 h-14 md:items-center'>
         <div
           className={` ${isDesktop || visible ? 'flex justify-center align-center' : 'hidden'} ${
-            !isDesktop && visible && 'flex flex-col absolute inset-y-14 bottom-0 inset-0 bg-orangada'
+            !isDesktop && visible && 'flex flex-col absolute inset-y-14 inset-0 h-screen w-screen bg-orangada'
           }`}>
           <div className='flex lg:flex-row flex-col flex-1 justify-center'>
             <span
@@ -57,7 +57,12 @@ export const Navigation = () => {
               <p>Cocktails</p>
             </span>
           </div>
-          <div>{!isDesktop && visible && <Toolbox />}</div>
+
+          {!isDesktop && visible && (
+            <div className='fixed bottom-0 inset-x-0 bg-orangada'>
+              <Toolbox />
+            </div>
+          )}
         </div>
         {!isDesktop && (
           <Button

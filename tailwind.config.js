@@ -18,6 +18,7 @@ export default {
       height: {
         customHeight: '80svh',
         mobileCustomHeight: '100svh',
+        navigationHeight: '60px',
       },
       fontFamily: {
         staatliches: ['Staatliches', 'sans-serif'],
