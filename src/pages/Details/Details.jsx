@@ -1,4 +1,5 @@
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faClock, faFaceGrinTongueSquint, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faRankingStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
 
@@ -179,16 +180,37 @@ export const Details = () => {
   const cocktail = COCKTAILS_DATA.find((cocktail) => cocktail.id === cocktailId);
 
   return (
-    <div className='bg-orangada flex flex-col lg:px-80 px-4 py-10 justify-center'>
-      <div className='flex flex-col gap-4'>
-        <h1 className='lg:text-5xl text-2xl font-oswald font-medium uppercase text-blueberry'>
-          {cocktail ? cocktail.name : 'Cocktail Not Found'}
-        </h1>
-        <span className='text-white flex justify-center items-center gap-2 text-sm hover:scale-110 cursor-pointer'>
-          <FontAwesomeIcon icon={faHeart} size='xl' />
-          <p>Save to favourites</p>
-        </span>
+    <main>
+      <div className='bg-orangada flex flex-col lg:px-80 px-4 py-10 justify-center'>
+        <div className='flex flex-col gap-4'>
+          <h1 className='lg:text-5xl text-2xl font-oswald font-medium uppercase text-blueberry'>
+            {cocktail ? cocktail.name : 'Cocktail Not Found'}
+          </h1>
+          <span className='text-white flex justify-center items-center gap-2 text-sm hover:scale-110 cursor-pointer'>
+            <FontAwesomeIcon icon={faHeart} size='xl' />
+            <p>Save to favourites</p>
+          </span>
+        </div>
       </div>
-    </div>
+      <div className='flex flex-col lg:px-36 py-12'>
+        <div className='flex justify-center p-2 text-blueberry'>
+          <span className='flex items-center lg:gap-2 gap-1 lg:px-8 px-4'>
+            <FontAwesomeIcon icon={faFaceGrinTongueSquint} style={{ color: '#fa4616' }} />
+            <p>{cocktail.taste}</p>
+          </span>
+          <span className='flex items-center lg:gap-2 gap-1 lg:px-8 px-4'>
+            <FontAwesomeIcon icon={faClock} style={{ color: '#fa4616' }} />
+            <p>{cocktail.time}</p>
+          </span>
+          <span className='flex items-center lg:gap-2 gap-1 lg:px-8 px-4'>
+            <FontAwesomeIcon icon={faRankingStar} style={{ color: '#fa4616' }} />
+            <p>{cocktail.level}</p>
+          </span>
+        </div>
+        <div className='flex justify-center p-4 text-justify'>
+          <p>{cocktail.description}</p>
+        </div>
+      </div>
+    </main>
   );
 };
