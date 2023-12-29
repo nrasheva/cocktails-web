@@ -8,7 +8,7 @@ const COCKTAILS_DATA = [
     id: 'd38238ec-d26b-4cc0-a3c5-9a00fbc34d58',
     name: 'A Quiet Cocktail',
     description: 'Inspired by the 2018 film A Quiet Place.',
-    img: 'src/assets/cocktails/aQuietCocktail.jpg',
+    img: '/cocktails/aQuietCocktail.jpg',
     ingredients: [
       ['Triple Sec Orange Liqueur', '20 ml'],
       ['Dry vermouth', '20 ml'],
@@ -27,7 +27,7 @@ const COCKTAILS_DATA = [
     id: '907e74b7-8d0b-4259-bbf0-f5974d3554dd',
     name: 'A Royale with Rum',
     description: 'This yummy milkshake twist is the perfect sweet treat…',
-    img: 'src/assets/cocktails/aRoyalCocktail.jpg',
+    img: '/cocktails/aRoyalCocktail.jpg',
     ingredients: [
       ['Almond Butter', '1 scoop(s)'],
       ['Triple Sec Orange Liqueur', '30 ml'],
@@ -48,7 +48,7 @@ const COCKTAILS_DATA = [
     name: 'After Dinner Special',
     description:
       'This cocktail used to be a pousse-café, to be drank layer after layer. But its orange and herbal notes work well when stirred, and served over ice.',
-    img: 'src/assets/cocktails/afterDinnerSpecial.jpg',
+    img: '/cocktails/afterDinnerSpecial.jpg',
     ingredients: [
       ['Benedictine', '30 ml'],
       ['Triple Sec Orange Liqueur', '30 ml'],
@@ -69,7 +69,7 @@ const COCKTAILS_DATA = [
     name: 'Berry Margarita',
     description:
       'Perfect for the fall season when berries are at their ripest. It produces a beautiful and bright pink color that is seducing even the most shy amateurs',
-    img: 'src/assets/cocktails/berryMargarita.jpg',
+    img: '/cocktails/berryMargarita.jpg',
     ingredients: [
       ['Blanco tequila', '45 ml'],
       ['Triple Sec Orange Liqueur', '30 ml'],
@@ -91,7 +91,7 @@ const COCKTAILS_DATA = [
     name: 'Atlas',
     description:
       'This American concoction was published in Chicago in 1937, it has a unique blend of fruits and light woody notes.',
-    img: 'src/assets/cocktails/atlas.jpg',
+    img: '/cocktails/atlas.jpg',
     ingredients: [
       ['Angostura Bitters', '1 dash(es)'],
       ['Triple Sec Orange Liqueur', '20 ml'],
@@ -113,7 +113,7 @@ const COCKTAILS_DATA = [
     name: 'Blue Bird',
     description:
       'Blue Bird was a land speed record that inspired two great bartenders to created a cocktail. Frank Meier from Ritz Hotel Paris in 1936, and William Tarling from the Café Royal Hotel in London in 1937.',
-    img: 'src/assets/cocktails/blueBird.jpg',
+    img: '/cocktails/blueBird.jpg',
     ingredients: [
       ['Blue food coloring', '3 dash(es)'],
       ['Triple Sec Orange Liqueur', '20 ml'],
@@ -135,7 +135,7 @@ const COCKTAILS_DATA = [
     name: 'Breakfast Martini',
     description:
       'Invented in 1997 by the internationally acclaimed bartender Salvatore Calabrese, this clever Cointreau cocktail uses one of the breakfast most iconic ingredient: orange marmalade.',
-    img: 'src/assets/cocktails/breakfastMartini.jpg',
+    img: '/cocktails/breakfastMartini.jpg',
     ingredients: [
       ['Triple Sec Orange Liqueur', '15 ml'],
       ['Fresh lemon juice', '15 ml'],
@@ -157,7 +157,7 @@ const COCKTAILS_DATA = [
     name: 'Coffee Merger',
     description:
       'A tasty and refreshing coffee based cocktail. This cocktail was known as Black Jack during the American prohibition and was served with a sugar rim.',
-    img: 'src/assets/cocktails/coffeeMerger.jpg',
+    img: '/cocktails/coffeeMerger.jpg',
     ingredients: [
       ['Triple Sec Orange Liqueur', '25 ml'],
       ['Espresso', '25 ml'],

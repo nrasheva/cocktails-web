@@ -36,6 +36,9 @@ export default {
       borderWidth: {
         '1px': '1px',
       },
+      zIndex: {
+        100: '100',
+      },
     },
   },
 };

@@ -32,7 +32,7 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className='bg-white fixed w-full top-0 left-0 h-navigationHeight lg:px-36 flex justify-around border-b-2 border-navBorder z-5 inset-0'>
+    <nav className='bg-white fixed w-full top-0 left-0 h-navigationHeight lg:px-36 flex justify-around border-b-2 border-navBorder z-100 inset-0'>
       <span
         className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}
         onClick={() => navigate('/')}>
