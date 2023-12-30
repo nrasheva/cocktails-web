@@ -27,5 +27,11 @@ export const Button = (props) => {
         </p>
       </button>
     );
+  } else if (props.type === 'small') {
+    return (
+      <button className='bg-orangada w-8 py-1 text-white font-bold hover:scale-110' onClick={props.onClick}>
+        <p className=''>{props.text}</p>
+      </button>
+    );
   }
 };
