@@ -17,6 +17,7 @@ export default {
       },
       height: {
         customHeight: '80svh',
+        imageHeight: '70svh',
         mobileCustomHeight: '100svh',
         navigationHeight: '60px',
       },
