@@ -26,7 +26,7 @@ export default {
         oswald: ['Oswald', 'sans-serif'],
       },
       backgroundImage: {
-        home: "url('src/assets/home.jpg')",
+        home: "url('/Home.jpg')",
       },
       letterSpacing: {
         wider: '.05em',

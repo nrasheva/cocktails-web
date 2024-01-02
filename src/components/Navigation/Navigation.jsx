@@ -43,15 +43,15 @@ export const Navigation = () => {
           className={` ${isDesktop || visible ? 'flex justify-center align-center' : 'hidden'} ${
             !isDesktop && visible && 'flex flex-col absolute inset-y-14 inset-0 h-screen w-screen bg-orangada'
           }`}>
-          <div className='flex lg:flex-row flex-col flex-1 justify-center'>
+          <div className='flex xl:flex-row flex-col flex-1 justify-center'>
             <span
-              className='lg:bg-white lg:text-black md:px-10 py-4 cursor-pointer lg:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+              className='xl:bg-white xl:text-black px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
               onClick={() => handleLink('')}>
               <FontAwesomeIcon icon={faHouse} />
               <p>Home</p>
             </span>
             <span
-              className='lg:bg-white lg:text-black md:px-10 py-4 cursor-pointer lg:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+              className='xl:bg-white xl:text-black md:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
               onClick={() => handleLink('cocktails')}>
               <FontAwesomeIcon icon={faMartiniGlassCitrus} />
               <p>Cocktails</p>
