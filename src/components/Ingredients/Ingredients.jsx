@@ -14,8 +14,12 @@ export const Ingredients = (props) => {
     setCount(newValue);
   };
 
+  const handleUnitChange = (unit) => {
+    setActiveUnit(unit);
+  };
+
   return (
-    <div className='bg-pink-500'>
+    <div className='bg-pink-500 p-4'>
       <div className='flex items-center gap-1'>
         <FontAwesomeIcon icon={faWineBottle} style={{ color: '#fa4616' }} size='xl' />
         <h2>INGREDIENTS</h2>
@@ -32,15 +36,13 @@ export const Ingredients = (props) => {
         </div>
         <p>Cocktail(s)</p>
       </div>
-      <div className='flex'>
+      <div className='flex bg-yellow-50'>
         <Input
           type='radio'
           name='unit'
           value='cl'
           text='CL'
-          onClick={() => {
-            setActiveUnit('cl');
-          }}
+          onClick={() => handleUnitChange('cl')}
           isActive={activeUnit === 'cl'}
         />
         <Input
@@ -48,9 +50,7 @@ export const Ingredients = (props) => {
           name='unit'
           value='oz'
           text='OZ'
-          onClick={() => {
-            setActiveUnit('oz');
-          }}
+          onClick={() => handleUnitChange('oz')}
           isActive={activeUnit === 'oz'}
         />
         <Input
@@ -58,11 +58,33 @@ export const Ingredients = (props) => {
           name='unit'
           value='ml'
           text='ML'
-          onClick={() => {
-            setActiveUnit('ml');
-          }}
+          onClick={() => handleUnitChange('ml')}
           isActive={activeUnit === 'ml'}
         />
+      </div>
+      <div className='py-8'>
+        <ul className='bg-red-200 flex flex-col gap-2 border-t-1px border-navBorder'>
+          {props.ingredients.map((ingr) => {
+            const ingredientQuantity = ingr[1].split(' ')[0];
+            const ingredientUnit = ingr[1].split(' ')[1];
+
+            return (
+              <li key={ingr} className=' flex gap-6 py-4 px-8 border-b-1px border-navBorder'>
+                <span className=''>
+                  {ingredientQuantity * count}{' '}
+                  {ingredientUnit === activeUnit ||
+                  ingredientUnit === 'unit' ||
+                  ingredientUnit === 'scoop(s)' ||
+                  ingredientUnit === 'dash(es)' ||
+                  ingredientUnit === 'Tbsp(s)'
+                    ? ingr[1].split(' ')[1]
+                    : activeUnit}
+                </span>
+                <span className=''>{ingr[0]}</span>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

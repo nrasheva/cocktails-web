@@ -219,7 +219,7 @@ export const Details = () => {
             <img className='w-96 h-96' src={cocktail.img} alt={cocktail.name} />
           </div>
           <div className='bg-blue-400 flex flex-col'>
-            <Ingredients />
+            <Ingredients ingredients={cocktail.ingredients} />
           </div>
         </div>
       </div>
