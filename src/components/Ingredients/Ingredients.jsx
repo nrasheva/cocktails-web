@@ -1,6 +1,6 @@
 import { faWineBottle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
@@ -9,14 +9,27 @@ export const Ingredients = (props) => {
   const [count, setCount] = useState(1);
   const [activeUnit, setActiveUnit] = useState('ml');
 
-  const handleInputChange = (event) => {
-    const newValue = event.target.value;
-    setCount(newValue);
+  const convertQuantity = (quantity, unit) => {
+    if (unit === 'cl') return quantity * 0.1;
+    if (unit === 'oz') return (quantity * 0.033814).toFixed(1);
+    return quantity;
   };
 
-  const handleUnitChange = (unit) => {
+  const handleInputChange = useCallback((event) => {
+    setCount(event.target.value);
+  }, []);
+
+  const handleUnitChange = useCallback((unit) => {
     setActiveUnit(unit);
-  };
+  }, []);
+
+  const incrementCount = useCallback(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, []);
+
+  const decrementCount = useCallback(() => {
+    setCount((prevCount) => Math.max(prevCount - 1, 0));
+  }, []);
 
   return (
     <div className='bg-pink-500 p-4'>
@@ -26,13 +39,13 @@ export const Ingredients = (props) => {
       </div>
       <div className='flex py-4 gap-2 items-center'>
         <div>
-          <Button type='small' text='-' onClick={() => count > 0 && setCount(count - 1)} />
+          <Button type='small' text='-' onClick={decrementCount} />
           <input
             className='w-10 py-1 text-center bg-transparent'
             value={count}
             onChange={(event) => handleInputChange(event)}
           />
-          <Button type='small' text='+' onClick={() => setCount(count + 1)} />
+          <Button type='small' text='+' onClick={incrementCount} />
         </div>
         <p>Cocktail(s)</p>
       </div>
@@ -64,23 +77,23 @@ export const Ingredients = (props) => {
       </div>
       <div className='py-8'>
         <ul className='bg-red-200 flex flex-col gap-2 border-t-1px border-navBorder'>
-          {props.ingredients.map((ingr) => {
-            const ingredientQuantity = ingr[1].split(' ')[0];
-            const ingredientUnit = ingr[1].split(' ')[1];
+          {props.ingredients.map((ingr, index) => {
+            const [ingredient, quantityUnit] = ingr[1].split(' ');
+            const quantity = !['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
+              ? convertQuantity(parseFloat(ingredient), activeUnit)
+              : ingredient;
+
+            const displayUnit =
+              quantityUnit === activeUnit || ['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
+                ? quantityUnit
+                : activeUnit;
 
             return (
-              <li key={ingr} className=' flex gap-6 py-4 px-8 border-b-1px border-navBorder'>
-                <span className=''>
-                  {ingredientQuantity * count}{' '}
-                  {ingredientUnit === activeUnit ||
-                  ingredientUnit === 'unit' ||
-                  ingredientUnit === 'scoop(s)' ||
-                  ingredientUnit === 'dash(es)' ||
-                  ingredientUnit === 'Tbsp(s)'
-                    ? ingr[1].split(' ')[1]
-                    : activeUnit}
+              <li key={`${ingr[0]}-${index}`} className='flex gap-6 py-4 px-8 border-b-1px border-navBorder'>
+                <span>
+                  {quantity * count} {displayUnit}
                 </span>
-                <span className=''>{ingr[0]}</span>
+                <span>{ingr[0]}</span>
               </li>
             );
           })}
