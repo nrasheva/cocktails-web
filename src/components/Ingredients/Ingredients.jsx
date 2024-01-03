@@ -37,6 +37,7 @@ export const Ingredients = (props) => {
         <FontAwesomeIcon icon={faWineBottle} style={{ color: '#fa4616' }} size='xl' />
         <h2>INGREDIENTS</h2>
       </div>
+      {/* Count buttons */}
       <div className='flex py-4 gap-2 items-center'>
         <div>
           <Button type='small' text='-' onClick={decrementCount} />
@@ -49,6 +50,7 @@ export const Ingredients = (props) => {
         </div>
         <p>Cocktail(s)</p>
       </div>
+      {/* Units inputs */}
       <div className='flex bg-yellow-50'>
         <Input
           type='radio'
@@ -75,6 +77,7 @@ export const Ingredients = (props) => {
           isActive={activeUnit === 'ml'}
         />
       </div>
+      {/* Ingredients quantity */}
       <div className='py-8'>
         <ul className='bg-red-200 flex flex-col gap-2 border-t-1px border-navBorder'>
           {props.ingredients.map((ingr, index) => {
