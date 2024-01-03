@@ -21,6 +21,9 @@ export default {
         mobileCustomHeight: '100svh',
         navigationHeight: '60px',
       },
+      width: {
+        imageWidth: '65svh',
+      },
       fontFamily: {
         staatliches: ['Staatliches', 'sans-serif'],
         oswald: ['Oswald', 'sans-serif'],

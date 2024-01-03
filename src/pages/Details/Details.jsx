@@ -216,7 +216,7 @@ export const Details = () => {
         </div>
         <div className='bg-green-400 grid lg:grid-cols-2 gap-4 py-2'>
           <div className='bg-red-400 flex justify-center'>
-            <img className='w-96 h-96' src={cocktail.img} alt={cocktail.name} />
+            <img className='xl:h-imageHeight xl:w-imageWidth w-96 h-96' src={cocktail.img} alt={cocktail.name} />
           </div>
           <div className='bg-blue-400 flex flex-col'>
             <Ingredients ingredients={cocktail.ingredients} />
