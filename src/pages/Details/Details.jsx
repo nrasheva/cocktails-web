@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
 
 import { Ingredients } from '../../components/Ingredients/Ingredients';
+import { Recipe } from '../../components/Recipe/Recipe';
 
 const COCKTAILS_DATA = [
   {
@@ -218,10 +219,12 @@ export const Details = () => {
           <div className='bg-red-400 flex justify-center'>
             <img className='xl:h-imageHeight xl:w-imageWidth w-96 h-96' src={cocktail.img} alt={cocktail.name} />
           </div>
+          {/* Ingredients */}
           <div className='bg-blue-400 flex flex-col'>
-            <Ingredients ingredients={cocktail.ingredients} />
+            <Ingredients ingredients={cocktail.ingredients} recipe={cocktail.recipe} />
           </div>
         </div>
+        <Recipe recipe={cocktail.recipe} />
       </div>
     </main>
   );
