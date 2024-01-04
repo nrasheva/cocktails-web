@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import styles from './Button.module.css';
 
 export const Button = (props) => {
@@ -30,6 +32,17 @@ export const Button = (props) => {
   } else if (props.type === 'small') {
     return (
       <button className='bg-orangada w-8 py-1 text-white font-bold hover:scale-110' onClick={props.onClick}>
+        <p className=''>{props.text}</p>
+      </button>
+    );
+  } else if (props.type === 'choice') {
+    const buttonClasses = `bg-transparent w-44 py-3 text-blueberry border-b-2 border-navBorder flex justify-center gap-1 ${
+      props.isActive ? 'border-orange-500' : ''
+    }`;
+
+    return (
+      <button className={buttonClasses} onClick={props.onClick}>
+        <FontAwesomeIcon icon={props.icon} style={{ color: '#fa4616' }} size='lg' />
         <p className=''>{props.text}</p>
       </button>
     );
