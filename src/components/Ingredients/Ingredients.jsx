@@ -28,12 +28,12 @@ export const Ingredients = (props) => {
   }, []);
 
   const decrementCount = useCallback(() => {
-    setCount((prevCount) => Math.max(prevCount - 1, 0));
+    setCount((prevCount) => Math.max(prevCount - 1, 1));
   }, []);
 
   return (
-    <div className='bg-pink-500 p-4'>
-      <div className='flex items-center gap-1'>
+    <div className='p-4'>
+      <div className='flex items-center gap-1 text-blueberry'>
         <FontAwesomeIcon icon={faWineBottle} style={{ color: '#fa4616' }} size='xl' />
         <h2>INGREDIENTS</h2>
       </div>
@@ -48,10 +48,10 @@ export const Ingredients = (props) => {
           />
           <Button type='small' text='+' onClick={incrementCount} />
         </div>
-        <p>Cocktail(s)</p>
+        <p className='text-blueberry'>Cocktail(s)</p>
       </div>
       {/* Units inputs */}
-      <div className='flex bg-yellow-50'>
+      <div className='flex'>
         <Input
           type='radio'
           name='unit'
@@ -79,7 +79,7 @@ export const Ingredients = (props) => {
       </div>
       {/* Ingredients quantity */}
       <div className='py-8'>
-        <ul className='bg-red-200 flex flex-col gap-2 border-t-1px border-navBorder'>
+        <ul className='flex flex-col gap-2 border-t-1px border-navBorder'>
           {props.ingredients.map((ingr, index) => {
             const [ingredient, quantityUnit] = ingr[1].split(' ');
             const quantity = !['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
@@ -92,7 +92,9 @@ export const Ingredients = (props) => {
                 : activeUnit;
 
             return (
-              <li key={`${ingr[0]}-${index}`} className='flex gap-6 py-4 px-8 border-b-1px border-navBorder'>
+              <li
+                key={`${ingr[0]}-${index}`}
+                className='flex gap-6 py-4 px-8 border-b-1px border-navBorder text-blueberry'>
                 <span>
                   {quantity * count} {displayUnit}
                 </span>
