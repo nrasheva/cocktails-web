@@ -184,7 +184,10 @@ export const Cocktails = () => {
         description='Explore our variety of cocktail recipes. From timeless classics to original creations, learn how to make the
           perfect drink.'
       />
-      <div className='flex flex-wrap justify-center gap-4 lg:px-36 py-12'>
+      <div className='flex xl:px-60 px-16 pt-8 text-blueberry font-semibold'>
+        <p>{COCKTAILS_DATA.length} COCKTAILS FOUND</p>
+      </div>
+      <div className='flex flex-wrap justify-center gap-4 xl:px-36 py-12'>
         {COCKTAILS_DATA.map((cocktail) => (
           <Cocktail
             key={cocktail.id}

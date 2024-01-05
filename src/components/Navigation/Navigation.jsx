@@ -34,7 +34,7 @@ export const Navigation = () => {
   return (
     <nav className='bg-white fixed w-full top-0 left-0 h-navigationHeight lg:px-36 flex justify-around border-b-2 border-navBorder z-100 inset-0'>
       <span
-        className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}
+        className={`lg:px-20 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}
         onClick={() => navigate('/')}>
         Cocktailandia
       </span>
@@ -45,13 +45,13 @@ export const Navigation = () => {
           }`}>
           <div className='flex xl:flex-row flex-col flex-1 justify-center'>
             <span
-              className='xl:bg-white xl:text-black px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+              className='xl:bg-white xl:text-blueberry xl:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
               onClick={() => handleLink('')}>
               <FontAwesomeIcon icon={faHouse} />
               <p>Home</p>
             </span>
             <span
-              className='xl:bg-white xl:text-black md:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+              className='xl:bg-white xl:text-blueberry xl:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
               onClick={() => handleLink('cocktails')}>
               <FontAwesomeIcon icon={faMartiniGlassCitrus} />
               <p>Cocktails</p>
