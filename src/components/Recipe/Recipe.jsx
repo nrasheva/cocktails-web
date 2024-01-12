@@ -9,16 +9,17 @@ export const Recipe = (props) => {
         <h2 className='text-blueberry font-semibold'>HOW TO MAKE</h2>
       </div>
       <ul className='xl:flex gap-4 py-8'>
-        {props.recipe.map((step) => {
-          const [index, action] = step.split(':');
+        {Array.isArray(props.recipe) &&
+          props.recipe.map((step) => {
+            const [index, action] = step.split(':');
 
-          return (
-            <li key={step} className='flex flex-col gap-1 items-start text-left text-blueberry'>
-              <p className='text-orangada font-semibold'>{'Step ' + index}</p>
-              <p className='text-blueberry'>{action + '.'}</p>
-            </li>
-          );
-        })}
+            return (
+              <li key={index} className='flex flex-col gap-1 items-start text-left text-blueberry'>
+                <p className='text-orangada font-semibold'>{'Step ' + index}</p>
+                <p className='text-blueberry'>{action + '.'}</p>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

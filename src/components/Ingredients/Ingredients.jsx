@@ -80,28 +80,29 @@ export const Ingredients = (props) => {
       {/* Ingredients quantity */}
       <div className='py-8'>
         <ul className='flex flex-col gap-2 border-t-1px border-navBorder'>
-          {props.ingredients.map((ingr, index) => {
-            const [ingredient, quantityUnit] = ingr[1].split(' ');
-            const quantity = !['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
-              ? convertQuantity(parseFloat(ingredient), activeUnit)
-              : ingredient;
+          {Array.isArray(props.ingredients) &&
+            props.ingredients.map((ingr, index) => {
+              const [ingredient, quantityUnit] = ingr[1].split(' ');
+              const quantity = !['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
+                ? convertQuantity(parseFloat(ingredient), activeUnit)
+                : ingredient;
 
-            const displayUnit =
-              quantityUnit === activeUnit || ['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
-                ? quantityUnit
-                : activeUnit;
+              const displayUnit =
+                quantityUnit === activeUnit || ['unit', 'scoop(s)', 'dash(es)', 'Tbsp(s)'].includes(quantityUnit)
+                  ? quantityUnit
+                  : activeUnit;
 
-            return (
-              <li
-                key={`${ingr[0]}-${index}`}
-                className='flex gap-6 py-4 px-8 border-b-1px border-navBorder text-blueberry'>
-                <span>
-                  {quantity * count} {displayUnit}
-                </span>
-                <span>{ingr[0]}</span>
-              </li>
-            );
-          })}
+              return (
+                <li
+                  key={`${ingr[0]}-${index}`}
+                  className='flex gap-6 py-4 px-8 border-b-1px border-navBorder text-blueberry'>
+                  <span>
+                    {quantity * count} {displayUnit}
+                  </span>
+                  <span>{ingr[0]}</span>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

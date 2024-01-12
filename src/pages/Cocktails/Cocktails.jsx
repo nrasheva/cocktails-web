@@ -18,7 +18,6 @@ export const Cocktails = () => {
     (async () => {
       try {
         const { cocktails } = await getCocktails();
-        console.log(Cocktails);
 
         dispatch(setCocktails(cocktails));
       } catch (error) {
@@ -40,12 +39,12 @@ export const Cocktails = () => {
       <div className='flex flex-wrap justify-center gap-4 xl:px-36 py-12'>
         {cocktails.map((cocktail) => (
           <Cocktail
-            key={cocktail.id}
+            key={cocktail._id}
             name={cocktail.name}
             img={cocktail.img}
             taste={cocktail.taste}
             level={cocktail.level}
-            onClick={() => navigate(`/details/${cocktail.id}`)}
+            onClick={() => navigate(`/details/${cocktail._id}`)}
           />
         ))}
       </div>
