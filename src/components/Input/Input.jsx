@@ -13,4 +13,17 @@ export const Input = (props) => {
       </label>
     );
   }
+
+  if (props.type === 'text') {
+    return (
+      <input
+        type={props.type}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
+        placeholder={props.placeholder}
+        className='bg-green-300 w-full py-1'
+      />
+    );
+  }
 };
