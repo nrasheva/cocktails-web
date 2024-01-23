@@ -48,7 +48,7 @@ export const Button = (props) => {
     );
   } else if (props.type === 'add') {
     return (
-      <button className='bg-orangada w-80 py-1 text-white hover:text-blueberry' onClick={props.onClick}>
+      <button className='bg-blueberryLight w-80 py-1 text-white hover:text-orangada' onClick={props.onClick}>
         <p className=''>{props.text}</p>
       </button>
     );

@@ -22,7 +22,7 @@ export const Input = (props) => {
         value={props.value}
         onChange={props.onChange}
         placeholder={props.placeholder}
-        className='bg-green-300 w-full py-1'
+        className='bg-white rounded w-full py-1'
       />
     );
   }
