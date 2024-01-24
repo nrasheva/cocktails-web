@@ -86,23 +86,25 @@ export const Create = () => {
   return (
     <>
       <Intro text='Add new cocktail' />
-      <div className='bg-yellow-500 flex justify-center'>
-        <form onSubmit={handleSubmit} className='bg-red-200 flex flex-col items-center gap-3 xl:w-1/3 w-full my-8'>
-          <div className='bg-green-500 flex flex-col gap-3 w-full xl:px-8 px-7'>
+      <div className='bg-create bg-center bg-cover flex justify-center'>
+        <form
+          onSubmit={handleSubmit}
+          className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full my-8 p-8'>
+          <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
             <Input type='text' name='name' value={formData.name} onChange={handleInputChange} placeholder='Name' />
             <textarea
               name='description'
               value={formData.description}
               onChange={handleInputChange}
               placeholder='Description'
-              className='bg-green-300 w-full py-2 max-h-24'
+              className='w-full py-2 max-h-24'
             />
             <Input type='text' name='img' value={formData.img} onChange={handleInputChange} placeholder='Image URL' />
           </div>
-          <div className='bg-blue-500 flex flex-col items-center gap-3 xl:w-full lg:px-8 px-7'>
-            <h3>Ingredients</h3>
+          <div className='flex flex-col items-center gap-3 xl:w-full lg:px-8 px-7'>
+            <h3 className='text-darkBerry font-semibold'>Ingredients</h3>
             {formData.ingredients.map((ingredient, index) => (
-              <div key={index} className='bg-orange-500 flex items-center gap-2 w-full'>
+              <div key={index} className='flex items-center gap-2 w-full'>
                 <Input
                   type='text'
                   value={ingredient[0]}
@@ -123,15 +125,15 @@ export const Create = () => {
             <Button type='add' text=' Add Ingredient' onClick={addIngredientField} />
           </div>
 
-          <div className='bg-blue-500 flex flex-col items-center gap-3 w-full xl:px-8 px-7'>
-            <h3>Recipe</h3>
+          <div className='flex flex-col items-center gap-3 w-full xl:px-8 px-7'>
+            <h3 className='text-darkBerry font-semibold'>Recipe</h3>
             {formData.recipe.map((step, index) => (
-              <div key={index} className='bg-orange-500 flex items-center gap-2 w-full'>
+              <div key={index} className='flex items-center gap-2 w-full'>
                 <textarea
                   value={step}
                   onChange={(e) => handleRecipeChange(index, e)}
                   placeholder={`Step ${index + 1}`}
-                  className='bg-green-300 w-full py-2 max-h-24'
+                  className='w-full py-2 max-h-24'
                 />
                 <p className='cursor-pointer' onClick={() => removeRecipeField(index)}>
                   <FontAwesomeIcon icon={faXmark} />
@@ -141,7 +143,7 @@ export const Create = () => {
             <Button type='add' text='Add Step' onClick={addRecipeField} />
           </div>
 
-          <div className='bg-blue-500 flex flex-col gap-3 w-full xl:px-8 px-7'>
+          <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
             <Input type='text' name='taste' value={formData.taste} onChange={handleInputChange} placeholder='Taste' />
             <Input
               type='text'
