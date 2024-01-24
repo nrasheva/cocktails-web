@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         orangada: '#fa4616',
+        lightOrangada: 'rgba(250,70,22, 0.7)',
         border: '#efefef',
         navBorder: '#c8c8c8',
         blueberryLight: 'rgba(9, 45, 77, 0.8)',
@@ -30,6 +31,7 @@ export default {
       },
       backgroundImage: {
         home: "url('/Home.jpg')",
+        create: "url('/Create.jpg')",
       },
       letterSpacing: {
         wider: '.05em',
