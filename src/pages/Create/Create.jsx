@@ -1,10 +1,12 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Intro } from '../../components/Intro/Intro';
+import { createCocktail } from '../../services/cocktails.service';
 
 export const Create = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ export const Create = () => {
     time: '',
     level: '',
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,7 +59,8 @@ export const Create = () => {
     setFormData({ ...formData, recipe: newRecipe });
   };
 
-  const addIngredientField = () => {
+  const addIngredientField = (e) => {
+    e.preventDefault();
     setFormData({ ...formData, ingredients: [...formData.ingredients, ['', '']] });
   };
 
@@ -66,7 +71,8 @@ export const Create = () => {
     });
   };
 
-  const addRecipeField = () => {
+  const addRecipeField = (e) => {
+    e.preventDefault();
     setFormData({ ...formData, recipe: [...formData.recipe, ''] });
   };
 
@@ -77,10 +83,17 @@ export const Create = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission here
     console.log(formData);
+
+    try {
+      await createCocktail(formData);
+      navigate('/cocktails');
+    } catch (error) {
+      console.error('Failed to create cocktail:', error);
+    }
   };
 
   return (
@@ -89,7 +102,7 @@ export const Create = () => {
       <div className='bg-create bg-center bg-cover flex justify-center'>
         <form
           onSubmit={handleSubmit}
-          className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full my-8 p-8'>
+          className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full xl:my-8 p-8'>
           <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
             <Input type='text' name='name' value={formData.name} onChange={handleInputChange} placeholder='Name' />
             <textarea
@@ -97,7 +110,7 @@ export const Create = () => {
               value={formData.description}
               onChange={handleInputChange}
               placeholder='Description'
-              className='w-full py-2 max-h-24'
+              className='w-full py-2 px-4 max-h-24'
             />
             <Input type='text' name='img' value={formData.img} onChange={handleInputChange} placeholder='Image URL' />
           </div>
@@ -122,7 +135,7 @@ export const Create = () => {
                 </p>
               </div>
             ))}
-            <Button type='add' text=' Add Ingredient' onClick={addIngredientField} />
+            <Button type='button' text=' Add Ingredient' onClick={addIngredientField} />
           </div>
 
           <div className='flex flex-col items-center gap-3 w-full xl:px-8 px-7'>
@@ -133,14 +146,14 @@ export const Create = () => {
                   value={step}
                   onChange={(e) => handleRecipeChange(index, e)}
                   placeholder={`Step ${index + 1}`}
-                  className='w-full py-2 max-h-24'
+                  className='w-full py-2 px-4 max-h-24'
                 />
                 <p className='cursor-pointer' onClick={() => removeRecipeField(index)}>
                   <FontAwesomeIcon icon={faXmark} />
                 </p>
               </div>
             ))}
-            <Button type='add' text='Add Step' onClick={addRecipeField} />
+            <Button type='button' text='Add Step' onClick={addRecipeField} />
           </div>
 
           <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
@@ -160,7 +173,7 @@ export const Create = () => {
               placeholder='Skill Level'
             />
           </div>
-          <Button type='regular' text='Submit' />
+          <Button type='submit' text='Submit' />
         </form>
       </div>
     </>
