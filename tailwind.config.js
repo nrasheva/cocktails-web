@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         orangada: '#fa4616',
-        lightOrangada: 'rgba(250,70,22, 0.7)',
+        lightOrangada: 'rgba(250,70,22, 0.6)',
         border: '#efefef',
         navBorder: '#c8c8c8',
         blueberryLight: 'rgba(9, 45, 77, 0.8)',

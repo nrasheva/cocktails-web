@@ -1,7 +1,7 @@
 import { axios } from '../axios';
 
 export const createCocktail = async (cocktail) => {
-  const { data } = await axios.post(`/cocktails/create`, cocktail);
+  const { data } = await axios.post(`/cocktails`, cocktail);
   return { cocktail: data };
 };
 
