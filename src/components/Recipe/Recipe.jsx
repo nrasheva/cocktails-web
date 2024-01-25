@@ -10,13 +10,13 @@ export const Recipe = (props) => {
       </div>
       <ul className='xl:flex gap-4 py-8'>
         {Array.isArray(props.recipe) &&
-          props.recipe.map((step) => {
-            const [index, action] = step.split(':');
+          props.recipe.map((step, index) => {
+            // const [index, action] = step.split(':');
 
             return (
-              <li key={index} className='flex flex-col gap-1 items-start text-left text-blueberry'>
-                <p className='text-orangada font-semibold'>{'Step ' + index}</p>
-                <p className='text-blueberry'>{action + '.'}</p>
+              <li key={step + index} className='flex flex-col gap-1 items-start text-left text-blueberry'>
+                <p className='text-orangada font-semibold'>{'Step ' + (index + 1)}</p>
+                <p className='text-blueberry'>{step + '.'}</p>
               </li>
             );
           })}
