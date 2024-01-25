@@ -21,7 +21,7 @@ export const Button = (props) => {
     );
   }
 
-  if (props.type === 'regular') {
+  if (props.type === 'regular' || props.type === 'submit') {
     return (
       <button className='' onClick={props.onClick}>
         <p className='w-80 py-3 border-2 border-white text-white bg-transparent hover:bg-white hover:text-blueberry uppercase'>
@@ -46,7 +46,7 @@ export const Button = (props) => {
         <p className=''>{props.text}</p>
       </button>
     );
-  } else if (props.type === 'add') {
+  } else if (props.type === 'button') {
     return (
       <button className='bg-blueberryLight w-80 py-1 text-white hover:text-orangada' onClick={props.onClick}>
         <p className=''>{props.text}</p>
