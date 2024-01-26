@@ -1,12 +1,13 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Intro } from '../../components/Intro/Intro';
 import { createCocktail } from '../../services/cocktails.service';
+import { validateCocktail } from '../../tools';
 
 export const Create = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +20,37 @@ export const Create = () => {
     time: '',
     level: '',
   });
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const issues = validateCocktail(
+      formData.name,
+      formData.description,
+      formData.img,
+      formData.ingredients,
+      formData.recipe,
+      formData.taste,
+      formData.time,
+      formData.level,
+    );
+
+    // If there is an API error, clear the error when the user starts correcting the credentials
+    setError('');
+    setWarning(issues);
+  }, [
+    formData.description,
+    formData.img,
+    formData.ingredients,
+    formData.level,
+    formData.name,
+    formData.recipe,
+    formData.taste,
+    formData.time,
+  ]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -87,12 +117,30 @@ export const Create = () => {
     e.preventDefault();
     // Handle form submission here
     console.log(formData);
+    setSubmitted(true);
 
-    try {
-      await createCocktail(formData);
-      navigate('/cocktails');
-    } catch (error) {
-      console.error('Failed to create cocktail:', error);
+    const validationMessage = validateCocktail(
+      formData.name,
+      formData.description,
+      formData.img,
+      formData.ingredients,
+      formData.recipe,
+      formData.taste,
+      formData.time,
+      formData.level,
+    );
+
+    setWarning(validationMessage); // Store the validation message in warning state
+    setError('');
+
+    if (!validationMessage) {
+      try {
+        await createCocktail(formData);
+        navigate('/cocktails');
+      } catch (error) {
+        console.error('Failed to create cocktail:', error);
+        setError(error.response.data.message);
+      }
     }
   };
 
@@ -137,7 +185,6 @@ export const Create = () => {
             ))}
             <Button type='button' text=' Add Ingredient' onClick={addIngredientField} />
           </div>
-
           <div className='flex flex-col items-center gap-3 w-full xl:px-8 px-7'>
             <h3 className='text-darkBerry font-semibold'>Recipe</h3>
             {formData.recipe.map((step, index) => (
@@ -155,7 +202,6 @@ export const Create = () => {
             ))}
             <Button type='button' text='Add Step' onClick={addRecipeField} />
           </div>
-
           <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
             <Input type='text' name='taste' value={formData.taste} onChange={handleInputChange} placeholder='Taste' />
             <Input
@@ -173,6 +219,8 @@ export const Create = () => {
               placeholder='Skill Level'
             />
           </div>
+          {submitted && Boolean(warning.length) && <p className='text-white bg-blueberry'>{warning}</p>}
+          {Boolean(error.length) && <p className='error-message'>{error}</p>}
           <Button type='submit' text='Submit' />
         </form>
       </div>
