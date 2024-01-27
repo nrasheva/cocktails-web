@@ -8,6 +8,7 @@ import { Cocktails } from './pages/Cocktails/Cocktails';
 import { Create } from './pages/Create/Create';
 import { Details } from './pages/Details/Details';
 import { Home } from './pages/Home/Home';
+import { Register } from './pages/Register/Register';
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         element: <Create />,
         path: '/cocktails/create',
+      },
+      {
+        element: <Register />,
+        path: '/register',
       },
     ],
     element: <App />,
