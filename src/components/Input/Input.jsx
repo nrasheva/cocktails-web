@@ -14,7 +14,7 @@ export const Input = (props) => {
     );
   }
 
-  if (props.type === 'text') {
+  if (props.type === 'text' || props.type === 'password' || props.type === 'email') {
     return (
       <input
         type={props.type}
