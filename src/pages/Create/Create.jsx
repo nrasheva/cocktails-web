@@ -146,7 +146,7 @@ export const Create = () => {
 
   return (
     <>
-      <Intro text='Add new cocktail' />
+      <Intro text='Create new cocktail' />
       <div className='bg-create bg-center bg-cover flex justify-center'>
         <form
           onSubmit={handleSubmit}
@@ -219,8 +219,8 @@ export const Create = () => {
               placeholder='Skill Level'
             />
           </div>
-          {submitted && Boolean(warning.length) && <p className='text-white bg-blueberry'>{warning}</p>}
-          {Boolean(error.length) && <p className='error-message'>{error}</p>}
+          {submitted && Boolean(warning.length) && <p className='text-blueberry font-bold'>{warning}</p>}
+          {Boolean(error.length) && <p>{error}</p>}
           <Button type='submit' text='Submit' />
         </form>
       </div>
