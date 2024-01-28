@@ -33,6 +33,7 @@ export default {
         home: "url('/Home.jpg')",
         create: "url('/Create.jpg')",
         register: "url('/Register.jpg')",
+        login: "url('/Login.jpg')",
       },
       letterSpacing: {
         wider: '.05em',
