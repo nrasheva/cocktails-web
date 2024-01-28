@@ -8,6 +8,7 @@ import { Cocktails } from './pages/Cocktails/Cocktails';
 import { Create } from './pages/Create/Create';
 import { Details } from './pages/Details/Details';
 import { Home } from './pages/Home/Home';
+import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         element: <Register />,
         path: '/register',
+      },
+      {
+        element: <Login />,
+        path: '/login',
       },
     ],
     element: <App />,
