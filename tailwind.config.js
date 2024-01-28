@@ -32,6 +32,7 @@ export default {
       backgroundImage: {
         home: "url('/Home.jpg')",
         create: "url('/Create.jpg')",
+        register: "url('/Register.jpg')",
       },
       letterSpacing: {
         wider: '.05em',
