@@ -27,7 +27,7 @@ export const Register = () => {
   return (
     <>
       <Intro text='Register' />
-      <div className='bg-register bg-center bg-cover flex flex-1 justify-center lg:py-16'>
+      <div className='bg-register bg-center bg-cover flex flex-1 justify-center lg:py-20'>
         <form
           onSubmit={(e) => e.preventDefault()}
           className='bg-lightOrangada rounded flex flex-col items-center gap-12 md:w-1/3 w-full md:my-8 px-8 md:py-12 py-32'>

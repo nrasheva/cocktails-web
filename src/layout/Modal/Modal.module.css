@@ -4,7 +4,7 @@
   min-height: 100svh;
   width: 100%;
   background-image: url('/Modal.jpg');
-  background-position: bottom;
+  background-position: center;
   background-size: cover;
 }
 
