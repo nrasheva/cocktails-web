@@ -40,20 +40,20 @@ export const Modal = () => {
     <>
       <dialog className={styles.dialog} ref={modalRef}>
         {underaged ? (
-          <div className='flex flex-col justify-center items-center p-8'>
+          <div className='bg-blueberryLight flex flex-col justify-center items-center p-8'>
             <h2
               className={`lg:px-10 py-3 cursor-pointer text-orangada uppercase font-staatliches font-bold tracking-wider text-3xl ${styles['text-shadow-custom']}`}>
               Cocktailandia
             </h2>
             <div className={styles.content}>
-              <p className='text-blueberry'>PLEASE ENTER YOUR YEAR OF BIRTH</p>
+              <p className='text-white font-bold'>PLEASE ENTER YOUR YEAR OF BIRTH</p>
             </div>
             <input
               placeholder='YYYY'
               type='number'
               id='year'
               name='year'
-              className={`bg-transparent lg:text-5xl text-2xl text-center text-blueberry ${styles.year}`}
+              className={`bg-transparent lg:text-5xl text-2xl text-center text-white ${styles.year}`}
               value={year}
               onChange={(e) => setYear(e.target.value)}
               onKeyDown={handleInputKeyPress}
