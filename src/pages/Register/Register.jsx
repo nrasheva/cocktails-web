@@ -1,26 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Intro } from '../../components/Intro/Intro';
 import { register } from '../../services/authentication.service';
+import { validateCredentials } from '../../tools';
 
 export const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [warning, setWarning] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    // setSubmitted(true);
+  useEffect(() => {
+    const issues = validateCredentials(email, password);
 
-    try {
-      await register(email, password);
-      navigate('/login');
-    } catch (error) {
-      console.log(error);
+    // If there is an API error, clear the error when the user starts correcting the credentials
+    setError('');
+    setWarning(issues);
+  }, [email, password]);
+
+  const handleRegister = async () => {
+    setSubmitted(true);
+
+    if (!warning.length) {
+      try {
+        await register(email, password);
+        navigate('/login');
+      } catch (error) {
+        console.log(error);
+        setError(error.response.data.message);
+      }
     }
   };
 
@@ -46,6 +60,8 @@ export const Register = () => {
               placeholder='Password'
               value={password}
             />
+            {submitted && Boolean(warning.length) && <p className='text-blueberry font-bold'>{warning}</p>}
+            {Boolean(error.length) && <p className='text-blueberry font-bold'>{error}</p>}
           </div>
           <div className='flex flex-col gap-2'>
             <Button type='submit' text='Register' onClick={handleRegister} />
