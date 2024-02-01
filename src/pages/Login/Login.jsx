@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Intro } from '../../components/Intro/Intro';
+import { setIsAuthenticated } from '../../redux/reducers/authentication';
 import { login } from '../../services/authentication.service';
 import { validateCredentials } from '../../tools';
 
@@ -13,6 +15,8 @@ export const Login = () => {
   const [error, setError] = useState('');
   const [warning, setWarning] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -28,7 +32,13 @@ export const Login = () => {
     setSubmitted(true);
     if (!warning.length) {
       try {
-        await login(email, password);
+        const { token: access_token } = await login(email, password);
+
+        console.log(access_token);
+
+        localStorage.setItem('token', access_token);
+
+        dispatch(setIsAuthenticated(true));
 
         navigate('/cocktails');
       } catch (error) {
