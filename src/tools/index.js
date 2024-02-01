@@ -1,3 +1,5 @@
+import { jwtDecode } from 'jwt-decode';
+
 // Validates Create cocktail
 export const validateCocktail = (name, description, img, ingredients, recipe, taste, time, level) => {
   const validImg = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/.test(img.trim());
@@ -45,4 +47,21 @@ export const validateCredentials = (email, password) => {
   }
 
   return '';
+};
+
+export const decodeToken = () => {
+  const access_token = localStorage.getItem('token');
+
+  return access_token ? jwtDecode(access_token) : null;
+};
+
+export const validateToken = () => {
+  const decodedToken = decodeToken();
+
+  if (decodedToken) {
+    const now = Math.floor(new Date().getTime() / 1000.0);
+    return decodedToken.exp > now;
+  } else {
+    return false;
+  }
 };
