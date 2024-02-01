@@ -10,6 +10,14 @@ import { Details } from './pages/Details/Details';
 import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
+import { setIsAuthenticated } from './redux/reducers/authentication';
+import { store } from './redux/store';
+
+const { validateToken } = await import('./tools');
+
+const validToken = validateToken();
+
+store.dispatch(setIsAuthenticated(validToken));
 
 export const router = createBrowserRouter([
   {
