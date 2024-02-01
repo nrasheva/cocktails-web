@@ -147,10 +147,10 @@ export const Create = () => {
   return (
     <>
       <Intro text='Create new cocktail' />
-      <div className='bg-create bg-center bg-cover flex justify-center'>
+      <div className='bg-create bg-center bg-cover flex justify-center lg:py-40'>
         <form
           onSubmit={handleSubmit}
-          className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full xl:my-8 p-8'>
+          className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full xl:my-8 py-32'>
           <div className='flex flex-col gap-3 w-full xl:px-8 px-7'>
             <Input type='text' name='name' value={formData.name} onChange={handleInputChange} placeholder='Name' />
             <textarea
