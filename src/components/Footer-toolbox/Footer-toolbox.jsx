@@ -1,8 +1,15 @@
-import { faCartShopping, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faCircleUser, faLocationDot, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-export const Toolbox = () => {
+import { setIsAuthenticated } from '../../redux/reducers/authentication';
+
+export const Toolbox = ({ onHideNavigation, onLogout }) => {
+  const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
+
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   return (
@@ -12,12 +19,27 @@ export const Toolbox = () => {
           <FontAwesomeIcon icon={faLocationDot} />
           <p>Find us</p>
         </span>
-        <span
-          className='flex items-center gap-2 lg:px-36 sm:px-4 py-4 cursor-pointer hover:bg-darkBerry'
-          onClick={() => navigate('/register')}>
-          <FontAwesomeIcon icon={faEnvelope} />
-          <p>Sign up</p>
-        </span>
+        {!isAuthenticated ? (
+          <span
+            className='flex items-center gap-2 lg:px-36 sm:px-4 py-4 cursor-pointer hover:bg-darkBerry'
+            onClick={() => {
+              navigate('/register');
+              if (onHideNavigation) onHideNavigation();
+            }}>
+            <FontAwesomeIcon icon={faCircleUser} />
+            <p>Sign up</p>
+          </span>
+        ) : (
+          <span
+            className='flex items-center gap-2 lg:px-36 sm:px-4 py-4 cursor-pointer hover:bg-darkBerry'
+            onClick={() => {
+              console.log('Logout clicked');
+              if (onHideNavigation) onHideNavigation();
+            }}>
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            <p>Logout</p>
+          </span>
+        )}
         <span className='flex items-center gap-2 lg:px-36 sm:px-4 py-4 cursor-pointer hover:bg-darkBerry'>
           <FontAwesomeIcon icon={faCartShopping} />
           <p>Shop</p>
