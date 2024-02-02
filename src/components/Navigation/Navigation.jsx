@@ -1,16 +1,22 @@
-import { faHouse, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faHouse, faMartiniGlassCitrus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMedia } from 'use-media';
 
 import styles from './Navigation.module.css';
+import { setIsAuthenticated } from '../../redux/reducers/authentication';
 import { Button } from '../Button/Button';
 import { Toolbox } from '../Footer-toolbox/Footer-toolbox';
 
 export const Navigation = () => {
   const [visible, setVisible] = useState(false);
   const isDesktop = useMedia({ minWidth: '1200px' });
+
+  const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
+
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,6 +27,10 @@ export const Navigation = () => {
 
   const handleNavigation = () => {
     setVisible(!visible);
+  };
+
+  const hideNavigation = () => {
+    setVisible(false);
   };
 
   const handleLink = (url) => {
@@ -57,10 +67,23 @@ export const Navigation = () => {
               <p>Cocktails</p>
             </span>
           </div>
+          {!isAuthenticated && isDesktop ? (
+            <span
+              className='xl:text-blueberry xl:flex items-center px-6 rounded-full cursor-pointer xl:hover:bg-border text-white'
+              onClick={() => handleLink('login')}>
+              <FontAwesomeIcon icon={faCircleUser} />
+            </span>
+          ) : (
+            <span
+              className='xl:text-blueberry xl:flex items-center px-6 rounded-full cursor-pointer xl:hover:bg-border text-white'
+              onClick=''>
+              <FontAwesomeIcon icon={faRightFromBracket} />
+            </span>
+          )}
 
           {!isDesktop && visible && (
             <div className='fixed bottom-0 inset-x-0 bg-orangada'>
-              <Toolbox />
+              <Toolbox onHideNavigation={hideNavigation} />
             </div>
           )}
         </div>
