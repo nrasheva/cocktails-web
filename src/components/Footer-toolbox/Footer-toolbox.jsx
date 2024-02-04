@@ -12,6 +12,15 @@ export const Toolbox = ({ onHideNavigation, onLogout }) => {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    console.log('Logout');
+
+    dispatch(setIsAuthenticated(false));
+
+    navigate('/login');
+  };
+
   return (
     <div className='flex justify-center bg-blueberry'>
       <div className='flex text-white gap-5'>
@@ -35,6 +44,7 @@ export const Toolbox = ({ onHideNavigation, onLogout }) => {
             onClick={() => {
               console.log('Logout clicked');
               if (onHideNavigation) onHideNavigation();
+              handleLogout();
             }}>
             <FontAwesomeIcon icon={faRightFromBracket} />
             <p>Logout</p>
