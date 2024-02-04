@@ -41,6 +41,15 @@ export const Navigation = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    console.log('Logout');
+
+    dispatch(setIsAuthenticated(false));
+
+    navigate('/login');
+  };
+
   return (
     <nav className='bg-white fixed w-full top-0 left-0 h-navigationHeight lg:px-36 flex justify-around border-b-2 border-navBorder z-100 inset-0'>
       <span
@@ -76,7 +85,7 @@ export const Navigation = () => {
           ) : (
             <span
               className='xl:text-blueberry xl:flex items-center px-6 rounded-full cursor-pointer xl:hover:bg-border text-white'
-              onClick=''>
+              onClick={handleLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />
             </span>
           )}
