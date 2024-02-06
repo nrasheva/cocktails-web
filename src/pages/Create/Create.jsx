@@ -220,7 +220,7 @@ export const Create = () => {
             />
           </div>
           {submitted && Boolean(warning.length) && <p className='text-blueberry font-bold'>{warning}</p>}
-          {Boolean(error.length) && <p>{error}</p>}
+          {Boolean(error.length) && <p className='text-blueberry font-bold'>{error}</p>}
           <Button type='submit' text='Submit' />
         </form>
       </div>
