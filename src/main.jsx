@@ -11,13 +11,16 @@ import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 import { setIsAuthenticated } from './redux/reducers/authentication';
+import { setIsAuthorized } from './redux/reducers/authorization';
 import { store } from './redux/store';
 
 const { validateToken } = await import('./tools');
 
 const validToken = validateToken();
+const isAuthorized = localStorage.getItem('role') === 'admin';
 
 store.dispatch(setIsAuthenticated(validToken));
+store.dispatch(setIsAuthorized(isAuthorized));
 
 export const router = createBrowserRouter([
   {
