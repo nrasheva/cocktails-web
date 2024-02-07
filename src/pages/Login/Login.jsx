@@ -6,6 +6,7 @@ import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Intro } from '../../components/Intro/Intro';
 import { setIsAuthenticated } from '../../redux/reducers/authentication';
+import { setIsAuthorized } from '../../redux/reducers/authorization';
 import { login } from '../../services/authentication.service';
 import { validateCredentials } from '../../tools';
 
@@ -32,13 +33,16 @@ export const Login = () => {
     setSubmitted(true);
     if (!warning.length) {
       try {
-        const { token: access_token } = await login(email, password);
+        const { token, roles } = await login(email, password);
 
-        console.log(access_token);
-
-        localStorage.setItem('token', access_token);
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', roles[0]);
 
         dispatch(setIsAuthenticated(true));
+
+        if (roles[0] === 'admin') {
+          dispatch(setIsAuthorized(true));
+        }
 
         navigate('/cocktails');
       } catch (error) {
