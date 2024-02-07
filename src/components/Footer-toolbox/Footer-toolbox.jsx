@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { setIsAuthenticated } from '../../redux/reducers/authentication';
+import { setIsAuthorized } from '../../redux/reducers/authorization';
 
 export const Toolbox = ({ onHideNavigation, onLogout }) => {
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
@@ -14,9 +15,10 @@ export const Toolbox = ({ onHideNavigation, onLogout }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    console.log('Logout');
+    localStorage.removeItem('role');
 
     dispatch(setIsAuthenticated(false));
+    dispatch(setIsAuthorized(false));
 
     navigate('/login');
   };
