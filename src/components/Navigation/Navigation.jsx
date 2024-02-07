@@ -7,6 +7,7 @@ import { useMedia } from 'use-media';
 
 import styles from './Navigation.module.css';
 import { setIsAuthenticated } from '../../redux/reducers/authentication';
+import { setIsAuthorized } from '../../redux/reducers/authorization';
 import { Button } from '../Button/Button';
 import { Toolbox } from '../Footer-toolbox/Footer-toolbox';
 
@@ -43,9 +44,10 @@ export const Navigation = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    console.log('Logout');
+    localStorage.removeItem('role');
 
     dispatch(setIsAuthenticated(false));
+    dispatch(setIsAuthorized(false));
 
     navigate('/login');
   };
