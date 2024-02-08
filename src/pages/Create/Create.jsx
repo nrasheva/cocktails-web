@@ -147,7 +147,7 @@ export const Create = () => {
   return (
     <>
       <Intro text='Create new cocktail' />
-      <div className='bg-create bg-center bg-cover flex justify-center lg:py-40'>
+      <div className='bg-create bg-center bg-cover flex justify-center lg:py-20'>
         <form
           onSubmit={handleSubmit}
           className='bg-lightOrangada rounded flex flex-col items-center gap-3 xl:w-1/3 w-full xl:my-8 py-32'>
