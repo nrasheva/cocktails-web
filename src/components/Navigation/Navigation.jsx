@@ -1,4 +1,10 @@
-import { faCircleUser, faHouse, faMartiniGlassCitrus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircleUser,
+  faHouse,
+  faMartiniGlassCitrus,
+  faPlus,
+  faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -76,6 +82,12 @@ export const Navigation = () => {
               onClick={() => handleLink('cocktails')}>
               <FontAwesomeIcon icon={faMartiniGlassCitrus} />
               <p>Cocktails</p>
+            </span>
+            <span
+              className='xl:bg-white xl:text-blueberry xl:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+              onClick={() => handleLink('cocktails/create')}>
+              <FontAwesomeIcon icon={faPlus} />
+              <p>Add cocktail</p>
             </span>
           </div>
           {!isAuthenticated && isDesktop ? (
