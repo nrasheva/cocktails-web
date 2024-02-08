@@ -22,6 +22,7 @@ export const Navigation = () => {
   const isDesktop = useMedia({ minWidth: '1200px' });
 
   const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
+  const isAuthorized = useSelector((state) => state.authorization.isAuthorized);
 
   const dispatch = useDispatch();
 
@@ -83,12 +84,14 @@ export const Navigation = () => {
               <FontAwesomeIcon icon={faMartiniGlassCitrus} />
               <p>Cocktails</p>
             </span>
-            <span
-              className='xl:bg-white xl:text-blueberry xl:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
-              onClick={() => handleLink('cocktails/create')}>
-              <FontAwesomeIcon icon={faPlus} />
-              <p>Add cocktail</p>
-            </span>
+            {isAuthorized && (
+              <span
+                className='xl:bg-white xl:text-blueberry xl:px-10 py-4 cursor-pointer xl:hover:bg-border text-white capitalize flex items-center justify-center gap-2'
+                onClick={() => handleLink('cocktails/create')}>
+                <FontAwesomeIcon icon={faPlus} />
+                <p>Add cocktail</p>
+              </span>
+            )}
           </div>
           {!isAuthenticated && isDesktop ? (
             <span
