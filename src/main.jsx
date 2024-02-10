@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import './index.css';
@@ -14,13 +14,21 @@ import { setIsAuthenticated } from './redux/reducers/authentication';
 import { setIsAuthorized } from './redux/reducers/authorization';
 import { store } from './redux/store';
 
-const { validateToken } = await import('./tools');
+const guard = async (path) => {
+  const { validateToken } = await import('./tools');
 
-const validToken = validateToken();
-const isAuthorized = localStorage.getItem('role') === 'admin';
+  const validToken = validateToken();
+  const isAuthorized = localStorage.getItem('role') === 'admin';
 
-store.dispatch(setIsAuthenticated(validToken));
-store.dispatch(setIsAuthorized(isAuthorized));
+  store.dispatch(setIsAuthenticated(validToken));
+  store.dispatch(setIsAuthorized(isAuthorized));
+
+  if (validToken && (path === 'login' || path === 'register')) {
+    return redirect('/cocktails');
+  }
+
+  return null;
+};
 
 export const router = createBrowserRouter([
   {
@@ -43,10 +51,12 @@ export const router = createBrowserRouter([
       },
       {
         element: <Register />,
+        loader: () => guard('register'),
         path: '/register',
       },
       {
         element: <Login />,
+        loader: () => guard('login'),
         path: '/login',
       },
     ],
