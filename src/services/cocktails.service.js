@@ -14,3 +14,7 @@ export const getCocktail = async (cocktailId) => {
   const { data } = await axios.get(`/cocktails/details?id=${cocktailId}`);
   return { cocktail: data };
 };
+
+export const editCocktail = async (cocktailId, data) => {
+  await instance.put(`/cocktails?id=${cocktailId}`, data);
+};
