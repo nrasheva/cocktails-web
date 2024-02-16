@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { authenticationReducer, setIsAuthenticated } from './reducers/authentication';
 import { authorizationReducer, setIsAuthorized } from './reducers/authorization';
 import { cocktailsReducer } from './reducers/cocktails';
+import { decodeToken, validateToken } from '../tools';
 
 export const store = configureStore({
   reducer: {
@@ -13,11 +14,11 @@ export const store = configureStore({
 });
 
 function initializeAuthState() {
-  const isAuthenticated = !!localStorage.getItem('token');
-  const isAuthorized = localStorage.getItem('role') === 'admin';
+  const isAuthenticated = validateToken();
+  const { isAdmin } = decodeToken();
 
   store.dispatch(setIsAuthenticated(isAuthenticated));
-  store.dispatch(setIsAuthorized(isAuthorized));
+  store.dispatch(setIsAuthorized(isAdmin));
 }
 
 initializeAuthState();
