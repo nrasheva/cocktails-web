@@ -13,15 +13,15 @@ import { Register } from './pages/Register/Register';
 import { setIsAuthenticated } from './redux/reducers/authentication';
 import { setIsAuthorized } from './redux/reducers/authorization';
 import { store } from './redux/store';
+import { decodeToken, validateToken } from './tools';
 
 const guard = async (path) => {
-  const { validateToken } = await import('./tools');
-
   const validToken = validateToken();
-  const isAuthorized = localStorage.getItem('role') === 'admin';
+
+  const { isAdmin } = decodeToken();
 
   store.dispatch(setIsAuthenticated(validToken));
-  store.dispatch(setIsAuthorized(isAuthorized));
+  store.dispatch(setIsAuthorized(isAdmin));
 
   if (validToken && (path === 'login' || path === 'register')) {
     return redirect('/cocktails');
