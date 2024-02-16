@@ -1,5 +1,6 @@
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -36,14 +37,16 @@ export const Login = () => {
     setSubmitted(true);
     if (!warning.length) {
       try {
-        const { token, roles } = await login(email, password);
+        const { token } = await login(email, password);
 
         localStorage.setItem('token', token);
-        localStorage.setItem('role', roles[0]);
+
+        const decoded = jwtDecode(token);
+        const roles = decoded.roles;
 
         dispatch(setIsAuthenticated(true));
 
-        if (roles[0] === 'admin') {
+        if (roles.includes('admin')) {
           dispatch(setIsAuthorized(true));
         }
 
