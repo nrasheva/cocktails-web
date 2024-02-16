@@ -51,7 +51,6 @@ export const Navigation = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('role');
 
     dispatch(setIsAuthenticated(false));
     dispatch(setIsAuthorized(false));
