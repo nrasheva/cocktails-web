@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 import { router } from '../main';
+import { setIsAuthenticated } from '../redux/reducers/authentication';
+import { setIsAuthorized } from '../redux/reducers/authorization';
+import { store } from '../redux/store';
 import { validateToken } from '../tools';
 
 const baseURL = 'http://localhost:3000';
@@ -19,6 +22,8 @@ instance.interceptors.request.use(
 
     if (!validToken) {
       controller.abort();
+      store.dispatch(setIsAuthenticated(false));
+      store.dispatch(setIsAuthorized(false));
       router.navigate('/login');
     }
 
