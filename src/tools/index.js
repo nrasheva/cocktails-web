@@ -52,7 +52,12 @@ export const validateCredentials = (email, password) => {
 export const decodeToken = () => {
   const access_token = localStorage.getItem('token');
 
-  return access_token ? jwtDecode(access_token) : null;
+  if (!access_token) return { decoded: null, isAdmin: false };
+
+  const decoded = jwtDecode(access_token);
+  const isAdmin = decoded.roles && decoded.roles.includes('admin');
+
+  return { decoded, isAdmin };
 };
 
 export const validateToken = () => {
