@@ -61,11 +61,11 @@ export const decodeToken = () => {
 };
 
 export const validateToken = () => {
-  const decodedToken = decodeToken();
+  const { decoded } = decodeToken();
 
-  if (decodedToken) {
+  if (decoded && decoded.exp) {
     const now = Math.floor(new Date().getTime() / 1000.0);
-    return decodedToken.exp > now;
+    return decoded.exp > now;
   } else {
     return false;
   }
