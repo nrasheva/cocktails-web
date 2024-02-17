@@ -27,6 +27,10 @@ const guard = async (path) => {
     return redirect('/cocktails');
   }
 
+  if (!isAdmin && path === 'cocktails/create') {
+    return redirect('/cocktails');
+  }
+
   return null;
 };
 
@@ -47,6 +51,7 @@ export const router = createBrowserRouter([
       },
       {
         element: <Create />,
+        loader: () => guard('cocktails/create'),
         path: '/cocktails/create',
       },
       {
