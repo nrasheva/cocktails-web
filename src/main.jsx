@@ -7,6 +7,7 @@ import './index.css';
 import { Cocktails } from './pages/Cocktails/Cocktails';
 import { Create } from './pages/Create/Create';
 import { Details } from './pages/Details/Details';
+import { Edit } from './pages/Edit/Edit';
 import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         element: <Details />,
         path: '/details/:cocktailId',
+      },
+      {
+        element: <Edit />,
+        path: '/details/:cocktailId/edit',
       },
       {
         element: <Create />,
