@@ -1,8 +1,15 @@
-import { faClock, faFaceGrinTongueSquint, faHeart } from '@fortawesome/free-regular-svg-icons';
+import {
+  faClock,
+  faFaceGrinTongueSquint,
+  faHeart,
+  faPenToSquare,
+  faTrashCan,
+} from '@fortawesome/free-regular-svg-icons';
 import { faMartiniGlassCitrus, faRankingStar, faWineBottle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMedia } from 'use-media';
 
 import { Button } from '../../components/Button/Button';
@@ -17,7 +24,10 @@ export const Details = () => {
   const [cocktail, setCocktail] = useState({});
   const isDesktop = useMedia({ minWidth: '1200px' });
 
-  // const cocktail = COCKTAILS_DATA.find((cocktail) => cocktail.id === cocktailId);
+  const isAuthenticated = useSelector((state) => state.authentication.isAuthenticated);
+  const isAuthorized = useSelector((state) => state.authorization.isAuthorized);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cocktailId && cocktailId !== 'undefined') {
@@ -39,10 +49,24 @@ export const Details = () => {
           <h1 className='lg:text-5xl text-2xl font-oswald font-medium uppercase text-blueberry'>
             {cocktail ? cocktail.name : 'Cocktail Not Found'}
           </h1>
-          <span className='text-white flex justify-center items-center gap-2 text-sm hover:scale-110 cursor-pointer'>
-            <FontAwesomeIcon icon={faHeart} size='xl' />
-            <p>Save to favourites</p>
-          </span>
+          {isAuthenticated && !isAuthorized && (
+            <span className='text-white flex justify-center items-center gap-2 text-sm hover:scale-110 cursor-pointer'>
+              <FontAwesomeIcon icon={faHeart} size='xl' />
+              <p>Save to favourites</p>
+            </span>
+          )}
+          {isAuthorized && (
+            <div className='text-white flex justify-center items-center gap-6 text-sm'>
+              <span className='flex gap-2 hover:scale-110 cursor-pointer'>
+                <FontAwesomeIcon icon={faPenToSquare} size='xl' />
+                <p>Edit</p>
+              </span>
+              <span className='flex gap-2 hover:scale-110 cursor-pointer'>
+                <FontAwesomeIcon icon={faTrashCan} size='xl' />
+                <p>Delete</p>
+              </span>
+            </div>
+          )}
         </div>
       </div>
       <div className='lg:px-36 py-12'>
