@@ -57,7 +57,9 @@ export const Details = () => {
           )}
           {isAuthorized && (
             <div className='text-white flex justify-center items-center gap-6 text-sm'>
-              <span className='flex gap-2 hover:scale-110 cursor-pointer'>
+              <span
+                className='flex gap-2 hover:scale-110 cursor-pointer'
+                onClick={() => navigate(`/details/${cocktail._id}/edit`)}>
                 <FontAwesomeIcon icon={faPenToSquare} size='xl' />
                 <p>Edit</p>
               </span>
