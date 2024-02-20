@@ -116,7 +116,6 @@ export const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission here
-    console.log(formData);
     setSubmitted(true);
 
     const validationMessage = validateCocktail(
