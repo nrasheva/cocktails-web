@@ -16,12 +16,9 @@ const instance = axios.create({ baseURL, timeout });
 
 instance.interceptors.request.use(
   async (config) => {
-    const controller = new AbortController();
-
     const validToken = validateToken();
 
     if (!validToken) {
-      controller.abort();
       store.dispatch(setIsAuthenticated(false));
       store.dispatch(setIsAuthorized(false));
       router.navigate('/login');
@@ -29,12 +26,12 @@ instance.interceptors.request.use(
 
     const token = localStorage.getItem('token');
 
-    config.headers['Authorization'] = `Bearer ${token}`;
-    return {
-      ...config,
-      signal: controller.signal,
-    };
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
   },
+
   (error) => {
     return Promise.reject(error);
   },
