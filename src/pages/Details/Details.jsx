@@ -16,7 +16,7 @@ import { Button } from '../../components/Button/Button';
 import { CocktailAttributes } from '../../components/CocktailAttributes/CocktailAttributes';
 import { Ingredients } from '../../components/Ingredients/Ingredients';
 import { Recipe } from '../../components/Recipe/Recipe';
-import { getCocktail } from '../../services/cocktails.service';
+import { deleteCocktail, getCocktail, getCocktails } from '../../services/cocktails.service';
 
 export const Details = () => {
   const { cocktailId } = useParams();
@@ -42,6 +42,16 @@ export const Details = () => {
     }
   }, [cocktailId]);
 
+  const handleDelete = async () => {
+    try {
+      await deleteCocktail(cocktailId);
+
+      navigate('/cocktails');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main>
       <div className='bg-orangada flex flex-col lg:px-80 px-4 py-10 justify-center'>
@@ -63,7 +73,7 @@ export const Details = () => {
                 <FontAwesomeIcon icon={faPenToSquare} size='xl' />
                 <p>Edit</p>
               </span>
-              <span className='flex gap-2 hover:scale-110 cursor-pointer'>
+              <span className='flex gap-2 hover:scale-110 cursor-pointer' onClick={handleDelete}>
                 <FontAwesomeIcon icon={faTrashCan} size='xl' />
                 <p>Delete</p>
               </span>
