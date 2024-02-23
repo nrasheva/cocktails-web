@@ -18,3 +18,7 @@ export const getCocktail = async (cocktailId) => {
 export const editCocktail = async (cocktailId, data) => {
   await instance.put(`/cocktails?id=${cocktailId}`, data);
 };
+
+export const deleteCocktail = async (cocktailId) => {
+  await instance.delete(`/cocktails?id=${cocktailId}`);
+};
