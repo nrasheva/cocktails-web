@@ -15,10 +15,8 @@ export const store = configureStore({
 
 function initializeAuthState() {
   const isAuthenticated = validateToken();
-  const { isAdmin } = decodeToken();
 
   store.dispatch(setIsAuthenticated(isAuthenticated));
-  store.dispatch(setIsAuthorized(isAdmin));
 }
 
 initializeAuthState();
