@@ -16,7 +16,7 @@ import { Button } from '../../components/Button/Button';
 import { CocktailAttributes } from '../../components/CocktailAttributes/CocktailAttributes';
 import { Ingredients } from '../../components/Ingredients/Ingredients';
 import { Recipe } from '../../components/Recipe/Recipe';
-import { deleteCocktail, getCocktail, getCocktails } from '../../services/cocktails.service';
+import { deleteCocktail, getCocktail } from '../../services/cocktails.service';
 
 export const Details = () => {
   const { cocktailId } = useParams();
