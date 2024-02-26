@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { authenticationReducer, setIsAuthenticated } from './reducers/authentication';
-import { authorizationReducer, setIsAuthorized } from './reducers/authorization';
+import { authorizationReducer } from './reducers/authorization';
 import { cocktailsReducer } from './reducers/cocktails';
-import { decodeToken, validateToken } from '../tools';
+import { validateToken } from '../tools';
 
 export const store = configureStore({
   reducer: {
