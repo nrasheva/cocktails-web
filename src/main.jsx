@@ -9,6 +9,7 @@ import { Create } from './pages/Create/Create';
 import { Details } from './pages/Details/Details';
 import { Edit } from './pages/Edit/Edit';
 import { Home } from './pages/Home/Home';
+import { Location } from './pages/Location/Location';
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 import { setIsAuthenticated } from './redux/reducers/authentication';
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
         element: <Login />,
         loader: () => guard('login'),
         path: '/login',
+      },
+      {
+        element: <Location />,
+        path: '/location',
       },
     ],
     element: <App />,
