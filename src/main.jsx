@@ -16,6 +16,7 @@ import { setIsAuthenticated } from './redux/reducers/authentication';
 import { setIsAuthorized } from './redux/reducers/authorization';
 import { store } from './redux/store';
 import { decodeToken, validateToken } from './tools';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 const guard = async (path) => {
   const validToken = validateToken();
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         element: <Location />,
         path: '/location',
+      },
+      {
+        element: <PageNotFound />,
+        path: '*',
       },
     ],
     element: <App />,
