@@ -11,12 +11,12 @@ import { Edit } from './pages/Edit/Edit';
 import { Home } from './pages/Home/Home';
 import { Location } from './pages/Location/Location';
 import { Login } from './pages/Login/Login';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 import { Register } from './pages/Register/Register';
 import { setIsAuthenticated } from './redux/reducers/authentication';
 import { setIsAuthorized } from './redux/reducers/authorization';
 import { store } from './redux/store';
 import { decodeToken, validateToken } from './tools';
-import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 const guard = async (path) => {
   const validToken = validateToken();
