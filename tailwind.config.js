@@ -34,6 +34,7 @@ export default {
         create: "url('/Create.jpg')",
         register: "url('/Register.jpg')",
         login: "url('/Login.jpg')",
+        error: "url('/Error.jpg')",
       },
       letterSpacing: {
         wider: '.05em',
